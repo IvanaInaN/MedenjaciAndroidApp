@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/vini_pu_size4"
+    tools:context="com.example.pkiProject.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dobrodosli"
+        android:textColor="@color/purple_500"
+        android:textStyle="italic"
+        android:textSize="24sp"
+        style="@style/Platform.MaterialComponents.Light"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="3dp"
+        android:backgroundTintMode="screen"
+        app:layout_constraintBottom_toTopOf="@id/btnSubmit"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+<!--        <TableRow>-->
+<!--            <TextView-->
+<!--                android:id="@+id/labelUsername"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/korisnicko_ime"-->
+<!--                android:textSize="24sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/purple_500" />-->
+<!--        </TableRow>-->
+
+        <TableRow>
+
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="256dp"
+                android:layout_height="32dp"
+                android:autofillHints="unesite password"
+                android:background="@color/white"
+                android:hint="@string/korisnicko_ime"
+                android:textColorHint="@color/purple_500"
+                android:inputType="text"
+                tools:ignore="LabelFor" />
+        </TableRow>
+        <TableRow>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp" />
+        </TableRow>
+
+<!--        <TableRow>-->
+<!--            <TextView-->
+<!--                android:id="@+id/labelPassword"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/lozinka"-->
+<!--                android:textSize="24sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/purple_500" />-->
+<!--        </TableRow>-->
+
+        <TableRow>
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="256dp"
+                android:layout_height="32dp"
+                android:autofillHints="unesite password"
+                android:background="@color/white"
+                android:inputType="textPassword"
+                android:hint="@string/lozinka"
+                android:textColorHint="@color/purple_500"
+                tools:ignore="LabelFor" />
+        </TableRow>
+
+
+    </TableLayout>
+
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="@string/potvrdi"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="32dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
