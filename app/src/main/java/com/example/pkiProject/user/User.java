@@ -1,6 +1,8 @@
 package com.example.pkiProject.user;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     String name;
     String address;

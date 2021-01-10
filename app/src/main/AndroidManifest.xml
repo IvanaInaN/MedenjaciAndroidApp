@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
-        <activity android:name="com.example.pkiProject.user.UserActivity"></activity>
-        <activity android:name="products.ProductsActivities" />
+        <activity android:name="com.example.pkiProject.products.ProductDetails"></activity>
+        <activity android:name="com.example.pkiProject.basket.BasketActivity" />
+        <activity android:name="com.example.pkiProject.user.UserActivity" />
+        <activity android:name="com.example.pkiProject.products.ProductsActivities" />
         <activity android:name="com.example.pkiProject.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

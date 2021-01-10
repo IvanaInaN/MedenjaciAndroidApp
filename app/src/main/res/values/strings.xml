@@ -7,4 +7,7 @@
     <string name="dostupni_proizvodi">Dostupni proizvodi</string>
     <string name="o_korisniku">O korisniku</string>
     <string name="korpa">Korpa</string>
+    <string name="ime_i_prezime">Ime i prezime</string>
+    <string name="adresa">Adresa</string>
+    <string name="telefon">Telefon</string>
 </resources>

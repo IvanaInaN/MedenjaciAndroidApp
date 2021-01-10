@@ -1,4 +1,4 @@
-package products;
+package com.example.pkiProject.products;
 
 import android.graphics.drawable.Drawable;
 

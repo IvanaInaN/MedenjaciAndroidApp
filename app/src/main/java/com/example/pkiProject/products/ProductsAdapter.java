@@ -1,6 +1,5 @@
-package products;
+package com.example.pkiProject.products;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.ListItemProductBinding;
+import com.example.pkiProject.basket.BasketAdapter;
 
 import java.util.List;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolder> {
 
     private List<Product> productList;
+    private static ClickListener mOnClickListener ;
 
     public ProductsAdapter() {
         super();
@@ -42,7 +43,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         return productList==null ? 0: productList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ListItemProductBinding binding;
 
         public ViewHolder(View view) {
@@ -50,6 +52,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
             binding = ListItemProductBinding.bind(view);
             // Define click listener for the ViewHolder's View
 
+        }
+
+        @Override
+        public void onClick(View v) {
+            mOnClickListener.onItemClick(getAdapterPosition(), v);
         }
     }
 
@@ -61,5 +68,14 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         this.productList = productList;
         notifyDataSetChanged();
     }
+
+    public interface ClickListener {
+        void onItemClick(int position, View v);
+        void onItemLongClick(int position, View v);
+    }
+    public void setOnItemClickListener(ClickListener clickListener) {
+        ProductsAdapter.mOnClickListener = clickListener;
+    }
+
 
 }
