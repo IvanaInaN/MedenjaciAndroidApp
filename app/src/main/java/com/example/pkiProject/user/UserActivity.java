@@ -1,6 +1,7 @@
 package com.example.pkiProject.user;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,6 +17,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.databinding.UserActivityBinding;
 import com.example.pkiProject.basket.BasketActivity;
 import com.example.pkiProject.util.AppConstants;
+import com.example.pkiProject.util.Movement;
 
 public class UserActivity extends AppCompatActivity {
 
@@ -32,6 +34,7 @@ public class UserActivity extends AppCompatActivity {
         setContentView(view);
         getCurrentUser();
         initUI();
+        allowGoBack();
     }
 
     private void getCurrentUser(){
@@ -91,25 +94,25 @@ public class UserActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.korisnik:
-                startUserActivity();
+                Movement.startUserActivity(this,currentUser);
                 return true;
             case R.id.korpa:
-                startBasketActivity();
+                Movement.startBasketActivity(this);
+                return true;
+            case android.R.id.home:
+                onBackPressed();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private void startUserActivity(){
-        Intent intent = new Intent(this, UserActivity.class);
-        intent.putExtra(AppConstants.CURRENT_USER, currentUser);
-        startActivity(intent);
+    private void allowGoBack(){
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
-    private void startBasketActivity(){
-        Intent intent = new Intent(this, BasketActivity.class);
-        startActivity(intent);
-    }
+
 
 }

@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,13 +20,15 @@ import com.example.myapplication.databinding.AvailableProductsBinding;
 import com.example.pkiProject.user.User;
 import com.example.pkiProject.user.UserActivity;
 import com.example.pkiProject.util.AppConstants;
+import com.example.pkiProject.util.Movement;
 
 import java.util.ArrayList;
 
-public class ProductsActivities extends AppCompatActivity {
+public class ProductsActivities extends AppCompatActivity implements ProductsAdapter.ListItemClickListener {
     private AvailableProductsBinding binding;
     private ProductsAdapter adapter;
     private User currentUser;
+    ArrayList<Product> products = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,43 +56,33 @@ public class ProductsActivities extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.korisnik:
-                startUserActivity();
+                Movement.startUserActivity(this, currentUser);
                 return true;
             case R.id.korpa:
+                Movement.startBasketActivity(this);
+                return true;
+            case android.R.id.home:
+                onBackPressed();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    private void startUserActivity(){
-        Intent intent = new Intent(this, UserActivity.class);
-        intent.putExtra(AppConstants.CURRENT_USER, currentUser);
-        startActivity(intent);
-    }
 
     private void initUI(){
-        ArrayList<Product> products = addProducts();
+        products = addProducts();
         // set up the RecyclerView
         RecyclerView recyclerView = binding.rvProducts;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ProductsAdapter();
+        adapter = new ProductsAdapter(this::onListItemClick);
         recyclerView.setAdapter(adapter);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
         adapter.setProductList(products);
 
-        adapter.setOnItemClickListener(new ProductsAdapter.ClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
-                
-            }
 
-            @Override
-            public void onItemLongClick(int position, View v) {
 
-            }
-        });
     }
 
     private ArrayList<Product> addProducts(){
@@ -99,4 +93,11 @@ public class ProductsActivities extends AppCompatActivity {
         return  products;
     }
 
+    @Override
+    public void onListItemClick(int position) {
+        Intent intent = new Intent(ProductsActivities.this , ProductDetails.class);
+        intent.putExtra(AppConstants.PRODUCT_DETAILS, (Parcelable) products.get(position));
+        intent.putExtra(AppConstants.CURRENT_USER, currentUser);
+        startActivity(intent);
+    }
 }

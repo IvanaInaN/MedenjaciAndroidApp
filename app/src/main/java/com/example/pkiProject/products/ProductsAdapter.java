@@ -16,10 +16,14 @@ import java.util.List;
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolder> {
 
     private List<Product> productList;
-    private static ClickListener mOnClickListener ;
+    final private ListItemClickListener mOnClickListener;
+    interface ListItemClickListener{
+        void onListItemClick(int position);
+    }
 
-    public ProductsAdapter() {
+    public ProductsAdapter(ListItemClickListener listener) {
         super();
+        this.mOnClickListener = listener;
     }
 
     @NonNull
@@ -44,19 +48,21 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     }
 
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ListItemProductBinding binding;
 
         public ViewHolder(View view) {
             super(view);
             binding = ListItemProductBinding.bind(view);
+            view.setOnClickListener(this);
             // Define click listener for the ViewHolder's View
 
         }
 
         @Override
         public void onClick(View v) {
-            mOnClickListener.onItemClick(getAdapterPosition(), v);
+            int position = getAdapterPosition();
+           mOnClickListener.onListItemClick(position);
         }
     }
 
@@ -69,13 +75,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         notifyDataSetChanged();
     }
 
-    public interface ClickListener {
-        void onItemClick(int position, View v);
-        void onItemLongClick(int position, View v);
-    }
-    public void setOnItemClickListener(ClickListener clickListener) {
-        ProductsAdapter.mOnClickListener = clickListener;
-    }
+
 
 
 }

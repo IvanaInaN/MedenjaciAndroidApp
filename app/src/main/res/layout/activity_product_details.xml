@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/vini_pu_size4"
     tools:context="com.example.pkiProject.products.ProductDetails">
 
     <TextView
@@ -11,13 +12,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="tvProduvtName"
+        android:textColor="@color/purple_500"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="patent"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
 
     <ImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:id="@+id/ivProduct"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
         app:layout_constraintTop_toBottomOf="@id/tvProductName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tvLabelaDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:textColor="@color/purple_500"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/ivProduct"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="@string/opis"
+        />
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/purple_500"
+        android:textStyle="italic"
+        app:layout_constraintTop_toBottomOf="@id/tvLabelaDescription"
         app:layout_constraintLeft_toLeftOf="parent"
         />
 
