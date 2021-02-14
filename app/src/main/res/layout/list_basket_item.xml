@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="#95ffffff"
     android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/ivPicture"
@@ -37,7 +38,7 @@
             android:textColor="@color/purple_500"
             android:textStyle="italic"
             android:textSize="24sp"
-            android:text="count"/>
+            />
     </LinearLayout>
 
 </RelativeLayout>

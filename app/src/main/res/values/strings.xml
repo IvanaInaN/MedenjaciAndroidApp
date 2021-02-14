@@ -11,4 +11,6 @@
     <string name="adresa">Adresa</string>
     <string name="telefon">Telefon</string>
     <string name="opis">Opis</string>
+    <string name="dodaj_u_korpu">Dodaj u korpu</string>
+    <string name="kolicina">Količina</string>
 </resources>

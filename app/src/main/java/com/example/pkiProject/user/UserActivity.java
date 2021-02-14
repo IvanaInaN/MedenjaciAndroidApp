@@ -15,7 +15,6 @@ import android.widget.EditText;
 
 import com.example.myapplication.R;
 import com.example.myapplication.databinding.UserActivityBinding;
-import com.example.pkiProject.basket.BasketActivity;
 import com.example.pkiProject.util.AppConstants;
 import com.example.pkiProject.util.Movement;
 
@@ -43,6 +42,7 @@ public class UserActivity extends AppCompatActivity {
     }
 
     private void initUI(){
+        if(currentUser ==null) return;
         binding.txtIme.setText(currentUser.getName());
         binding.txtAdresa.setText(currentUser.getAddress());
         binding.txtTelefon.setText(currentUser.getPhone());
@@ -97,7 +97,7 @@ public class UserActivity extends AppCompatActivity {
                 Movement.startUserActivity(this,currentUser);
                 return true;
             case R.id.korpa:
-                Movement.startBasketActivity(this);
+                Movement.startBasketActivity(this, currentUser);
                 return true;
             case android.R.id.home:
                 onBackPressed();

@@ -12,16 +12,19 @@ public class Product implements Serializable, Parcelable {
     String description;
     String price;
     Drawable imageView;
+    Integer price1;
 
-    public Product(String description, String price, Drawable imageView) {
+    public Product(String description, String price, Drawable imageView, Integer price1) {
         this.description = description;
         this.price = price;
         this.imageView = imageView;
+        this.price1= price1;
     }
 
     protected Product(Parcel in) {
         description = in.readString();
         price = in.readString();
+        price1 = in.readInt();
         Bitmap bitmap = (Bitmap)in.readParcelable(getClass().getClassLoader());
         // Convert Bitmap to Drawable:
         imageView = new BitmapDrawable(bitmap);
@@ -70,8 +73,17 @@ public class Product implements Serializable, Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(description);
         dest.writeString(price);
+        dest.writeInt(price1);
         Bitmap bitmap = (Bitmap)((BitmapDrawable) imageView).getBitmap();
         // Serialize bitmap as Parcelable:
         dest.writeParcelable(bitmap, flags);
+    }
+
+    public Integer getPrice1() {
+        return price1;
+    }
+
+    public void setPrice1(Integer price1) {
+        this.price1 = price1;
     }
 }

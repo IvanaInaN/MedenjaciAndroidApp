@@ -16,8 +16,9 @@ public class Movement {
         activity.startActivity(intent);
     }
 
-    public static void startBasketActivity(Activity activity){
+    public static void startBasketActivity(Activity activity, User user){
         Intent intent = new Intent(activity, BasketActivity.class);
+        intent.putExtra(AppConstants.CURRENT_USER, user);
         activity.startActivity(intent);
     }
 

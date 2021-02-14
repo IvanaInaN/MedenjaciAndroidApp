@@ -59,7 +59,7 @@ public class ProductsActivities extends AppCompatActivity implements ProductsAda
                 Movement.startUserActivity(this, currentUser);
                 return true;
             case R.id.korpa:
-                Movement.startBasketActivity(this);
+                Movement.startBasketActivity(this, currentUser);
                 return true;
             case android.R.id.home:
                 onBackPressed();
@@ -87,9 +87,9 @@ public class ProductsActivities extends AppCompatActivity implements ProductsAda
 
     private ArrayList<Product> addProducts(){
         ArrayList<Product> products = new ArrayList<>();
-        products.add(new Product("Propolis 20ml","230.00 din",getDrawable(R.drawable.ic_propolis)));
-        products.add(new Product("Propolis 50ml","250.00 din",getDrawable(R.drawable.ic_propolis)));
-        products.add(new Product("Propolis 70ml","330.00 din",getDrawable(R.drawable.ic_propolis)));
+        products.add(new Product("Propolis 20ml","230.00 din",getDrawable(R.drawable.ic_propolis),230));
+        products.add(new Product("Propolis 50ml","250.00 din",getDrawable(R.drawable.ic_propolis),250));
+        products.add(new Product("Propolis 70ml","330.00 din",getDrawable(R.drawable.ic_propolis),330));
         return  products;
     }
 

@@ -6,6 +6,11 @@ public class BasketItem {
     private Product product;
     private Integer count;
 
+    public BasketItem(Product product, Integer count) {
+        this.product = product;
+        this.count = count;
+    }
+
     public Product getProduct() {
         return product;
     }

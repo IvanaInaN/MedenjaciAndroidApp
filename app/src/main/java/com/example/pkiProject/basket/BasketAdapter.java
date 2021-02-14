@@ -1,5 +1,6 @@
 package com.example.pkiProject.basket;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,13 +29,14 @@ public class BasketAdapter extends RecyclerView.Adapter<BasketAdapter.ViewHolder
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull BasketAdapter.ViewHolder holder, int position) {
         BasketItem item = itemList.get(position);
         holder.binding.ivPicture.setImageDrawable(item.getProduct().getImageView());
         holder.binding.tvProductName.setText(item.getProduct().getDescription());
-        holder.binding.tvProductPrice.setText(item.getProduct().getPrice());
-        holder.binding.tvCount.setText(item.getCount());
+        holder.binding.tvProductPrice.setText("Cena: "+item.getProduct().getPrice());
+        holder.binding.tvCount.setText("Kolicina: "+item.getCount().toString());
     }
 
     @Override

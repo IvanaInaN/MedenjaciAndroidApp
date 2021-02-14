@@ -49,15 +49,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private int checkIfUserExist(String username, String password){
-        int faund = 0;
+        int found = 0;
         for(User user:users){
             if(user.getPasword().equals(password) && user.getUsername().equals(username)){
-                faund= 1;
+                found= 1;
                 currentUser = user;
                 break;
             }
         }
-        return faund;
+        return found;
     }
 
     private void showError(){
